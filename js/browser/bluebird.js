@@ -1,5 +1,5 @@
 /**
- * bluebird build version 2.5.1
+ * bluebird build version 2.5.2
  * Features enabled: core, race, call_get, generators, map, nodeify, promisify, props, reduce, settle, some, progress, cancel, using, filter, any, each, timers
 */
 /**
@@ -26,7 +26,7 @@
  * THE SOFTWARE.
  *
  */
-!function(e){"object"==typeof exports?module.exports=e():"function"==typeof define&&define.amd?define(e):"undefined"!=typeof window?window.Promise=e():"undefined"!=typeof global?global.Promise=e():"undefined"!=typeof self&&(self.Promise=e())}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.Promise=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -76,7 +76,7 @@ Promise.prototype.any = function () {
 
 };
 
-},{}],2:[function(require,module,exports){
+},{}],2:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -103,8 +103,8 @@ Promise.prototype.any = function () {
  */
 "use strict";
 var firstLineError = new Error();
-var schedule = require("./schedule.js");
-var Queue = require("./queue.js");
+var schedule = _dereq_("./schedule.js");
+var Queue = _dereq_("./queue.js");
 var _process = typeof process !== "undefined" ? process : undefined;
 
 function Async() {
@@ -198,7 +198,7 @@ Async.prototype._reset = function () {
 module.exports = new Async();
 module.exports.firstLineError = firstLineError;
 
-},{"./queue.js":25,"./schedule.js":28}],3:[function(require,module,exports){
+},{"./queue.js":25,"./schedule.js":28}],3:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -231,10 +231,10 @@ function noConflict(bluebird) {
     catch (e) {}
     return bluebird;
 }
-module.exports = require("./promise.js")();
+module.exports = _dereq_("./promise.js")();
 module.exports.noConflict = noConflict;
 
-},{"./promise.js":20}],4:[function(require,module,exports){
+},{"./promise.js":20}],4:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -268,7 +268,7 @@ if (cr) {
 }
 
 module.exports = function(Promise) {
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var canEvaluate = util.canEvaluate;
 var isIdentifier = util.isIdentifier;
 
@@ -360,7 +360,7 @@ Promise.prototype.get = function (propertyName) {
 };
 };
 
-},{"./util.js":35}],5:[function(require,module,exports){
+},{"./util.js":35}],5:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -387,10 +387,10 @@ Promise.prototype.get = function (propertyName) {
  */
 "use strict";
 module.exports = function(Promise, INTERNAL) {
-var errors = require("./errors.js");
+var errors = _dereq_("./errors.js");
 var canAttachTrace = errors.canAttachTrace;
-var async = require("./async.js");
-var util = require("./util.js");
+var async = _dereq_("./async.js");
+var util = _dereq_("./util.js");
 var CancellationError = errors.CancellationError;
 
 Promise.prototype._cancel = function (reason) {
@@ -440,7 +440,7 @@ Promise.prototype.fork = function (didFulfill, didReject, didProgress) {
 };
 };
 
-},{"./async.js":2,"./errors.js":10,"./util.js":35}],6:[function(require,module,exports){
+},{"./async.js":2,"./errors.js":10,"./util.js":35}],6:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -467,8 +467,8 @@ Promise.prototype.fork = function (didFulfill, didReject, didProgress) {
  */
 "use strict";
 module.exports = function() {
-var inherits = require("./util.js").inherits;
-var defineProperty = require("./es5.js").defineProperty;
+var inherits = _dereq_("./util.js").inherits;
+var defineProperty = _dereq_("./es5.js").defineProperty;
 var rtraceline = null;
 var formatStack = null;
 
@@ -780,7 +780,7 @@ var captureStackTrace = (function stackDetection() {
 return CapturedTrace;
 };
 
-},{"./es5.js":12,"./util.js":35}],7:[function(require,module,exports){
+},{"./es5.js":12,"./util.js":35}],7:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -807,11 +807,11 @@ return CapturedTrace;
  */
 "use strict";
 module.exports = function(NEXT_FILTER) {
-var util = require("./util.js");
-var errors = require("./errors.js");
+var util = _dereq_("./util.js");
+var errors = _dereq_("./errors.js");
 var tryCatch1 = util.tryCatch1;
 var errorObj = util.errorObj;
-var keys = require("./es5.js").keys;
+var keys = _dereq_("./es5.js").keys;
 var TypeError = errors.TypeError;
 
 function CatchFilter(instances, callback, promise) {
@@ -876,7 +876,7 @@ CatchFilter.prototype.doFilter = function (e) {
 return CatchFilter;
 };
 
-},{"./errors.js":10,"./es5.js":12,"./util.js":35}],8:[function(require,module,exports){
+},{"./errors.js":10,"./es5.js":12,"./util.js":35}],8:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -902,7 +902,7 @@ return CatchFilter;
  * 
  */
 "use strict";
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var isPrimitive = util.isPrimitive;
 var wrapsPrimitiveReceiver = util.wrapsPrimitiveReceiver;
 
@@ -956,7 +956,7 @@ Promise.prototype.thenThrow = function (reason) {
 };
 };
 
-},{"./util.js":35}],9:[function(require,module,exports){
+},{"./util.js":35}],9:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -994,7 +994,7 @@ Promise.each = function (promises, fn) {
 };
 };
 
-},{}],10:[function(require,module,exports){
+},{}],10:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1020,9 +1020,9 @@ Promise.each = function (promises, fn) {
  * 
  */
 "use strict";
-var Objectfreeze = require("./es5.js").freeze;
-var propertyIsWritable = require("./es5.js").propertyIsWritable;
-var util = require("./util.js");
+var Objectfreeze = _dereq_("./es5.js").freeze;
+var propertyIsWritable = _dereq_("./es5.js").propertyIsWritable;
+var util = _dereq_("./util.js");
 var inherits = util.inherits;
 var notEnumerableProp = util.notEnumerableProp;
 
@@ -1145,7 +1145,7 @@ module.exports = {
     canAttachTrace: canAttachTrace
 };
 
-},{"./es5.js":12,"./util.js":35}],11:[function(require,module,exports){
+},{"./es5.js":12,"./util.js":35}],11:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1172,7 +1172,7 @@ module.exports = {
  */
 "use strict";
 module.exports = function(Promise) {
-var TypeError = require('./errors.js').TypeError;
+var TypeError = _dereq_('./errors.js').TypeError;
 
 function apiRejection(msg) {
     var error = new TypeError(msg);
@@ -1187,7 +1187,7 @@ function apiRejection(msg) {
 return apiRejection;
 };
 
-},{"./errors.js":10}],12:[function(require,module,exports){
+},{"./errors.js":10}],12:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1285,7 +1285,7 @@ if (isES5) {
     };
 }
 
-},{}],13:[function(require,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1323,7 +1323,7 @@ Promise.filter = function (promises, fn, options) {
 };
 };
 
-},{}],14:[function(require,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1350,7 +1350,7 @@ Promise.filter = function (promises, fn, options) {
  */
 "use strict";
 module.exports = function(Promise, NEXT_FILTER, tryConvertToPromise) {
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var wrapsPrimitiveReceiver = util.wrapsPrimitiveReceiver;
 var isPrimitive = util.isPrimitive;
 var thrower = util.thrower;
@@ -1448,7 +1448,7 @@ Promise.prototype.tap = function (handler) {
 };
 };
 
-},{"./util.js":35}],15:[function(require,module,exports){
+},{"./util.js":35}],15:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1478,10 +1478,10 @@ module.exports = function(Promise,
                           apiRejection,
                           INTERNAL,
                           tryConvertToPromise) {
-var errors = require("./errors.js");
+var errors = _dereq_("./errors.js");
 var TypeError = errors.TypeError;
-var deprecated = require("./util.js").deprecated;
-var util = require("./util.js");
+var deprecated = _dereq_("./util.js").deprecated;
+var util = _dereq_("./util.js");
 var errorObj = util.errorObj;
 var tryCatch1 = util.tryCatch1;
 var yieldHandlers = [];
@@ -1501,9 +1501,10 @@ function promiseFromYieldHandler(value, yieldHandlers, traceParent) {
     return null;
 }
 
-function PromiseSpawn(generatorFunction, receiver, yieldHandler) {
+function PromiseSpawn(generatorFunction, receiver, yieldHandler, stack) {
     var promise = this._promise = new Promise(INTERNAL);
     promise._setTrace(undefined);
+    this._stack = stack;
     this._generatorFunction = generatorFunction;
     this._receiver = receiver;
     this._generator = undefined;
@@ -1547,7 +1548,12 @@ PromiseSpawn.prototype._continue = function (result) {
                                         this._yieldHandlers,
                                         this._promise);
             if (maybePromise === null) {
-                this._throw(new TypeError("A value was yielded that could not be treated as a promise\u000a\u000a    See http://goo.gl/4Y4pDk\u000a"));
+                this._throw(
+                    new TypeError(
+                        "A value %s was yielded that could not be treated as a promise\u000a\u000a    See http://goo.gl/4Y4pDk\u000a\u000a".replace("%s", value) +
+                        "From coroutine:\u000a" + this._stack.split('\n').slice(1, -7).join('\n')
+                    )
+                );
                 return;
             }
         }
@@ -1581,9 +1587,10 @@ Promise.coroutine = function (generatorFunction, options) {
     }
     var yieldHandler = Object(options).yieldHandler;
     var PromiseSpawn$ = PromiseSpawn;
+    var stack = new Error().stack;
     return function () {
         var generator = generatorFunction.apply(this, arguments);
-        var spawn = new PromiseSpawn$(undefined, undefined, yieldHandler);
+        var spawn = new PromiseSpawn$(undefined, undefined, yieldHandler, stack);
         spawn._generator = generator;
         spawn._next(undefined);
         return spawn.promise();
@@ -1607,7 +1614,7 @@ Promise.spawn = function (generatorFunction) {
 };
 };
 
-},{"./errors.js":10,"./util.js":35}],16:[function(require,module,exports){
+},{"./errors.js":10,"./util.js":35}],16:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1635,7 +1642,7 @@ Promise.spawn = function (generatorFunction) {
 "use strict";
 module.exports =
 function(Promise, PromiseArray, tryConvertToPromise, INTERNAL) {
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var canEvaluate = util.canEvaluate;
 var tryCatch1 = util.tryCatch1;
 var errorObj = util.errorObj;
@@ -1734,7 +1741,7 @@ Promise.join = function () {
 
 };
 
-},{"./util.js":35}],17:[function(require,module,exports){
+},{"./util.js":35}],17:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1765,7 +1772,7 @@ module.exports = function(Promise,
                           apiRejection,
                           tryConvertToPromise,
                           INTERNAL) {
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var tryCatch3 = util.tryCatch3;
 var errorObj = util.errorObj;
 var PENDING = {};
@@ -1887,7 +1894,7 @@ Promise.map = function (promises, fn, options, _filter) {
 
 };
 
-},{"./util.js":35}],18:[function(require,module,exports){
+},{"./util.js":35}],18:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1914,8 +1921,8 @@ Promise.map = function (promises, fn, options, _filter) {
  */
 "use strict";
 module.exports = function(Promise) {
-var util = require("./util.js");
-var async = require("./async.js");
+var util = _dereq_("./util.js");
+var async = _dereq_("./async.js");
 var tryCatch2 = util.tryCatch2;
 var tryCatch1 = util.tryCatch1;
 var errorObj = util.errorObj;
@@ -1963,7 +1970,7 @@ Promise.prototype.nodeify = function (nodeback, options) {
 };
 };
 
-},{"./async.js":2,"./util.js":35}],19:[function(require,module,exports){
+},{"./async.js":2,"./util.js":35}],19:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -1990,9 +1997,9 @@ Promise.prototype.nodeify = function (nodeback, options) {
  */
 "use strict";
 module.exports = function(Promise, PromiseArray) {
-var util = require("./util.js");
-var async = require("./async.js");
-var errors = require("./errors.js");
+var util = _dereq_("./util.js");
+var async = _dereq_("./async.js");
+var errors = _dereq_("./errors.js");
 var tryCatch1 = util.tryCatch1;
 var errorObj = util.errorObj;
 
@@ -2066,7 +2073,7 @@ Promise.prototype._progressUnchecked = function (progressValue) {
 };
 };
 
-},{"./async.js":2,"./errors.js":10,"./util.js":35}],20:[function(require,module,exports){
+},{"./async.js":2,"./errors.js":10,"./util.js":35}],20:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -2099,18 +2106,18 @@ var makeSelfResolutionError = function () {
 var reflect = function() {
     return new Promise.PromiseInspection(this._target());
 };
-var util = require("./util.js");
-var async = require("./async.js");
-var errors = require("./errors.js");
+var util = _dereq_("./util.js");
+var async = _dereq_("./async.js");
+var errors = _dereq_("./errors.js");
 var INTERNAL = function(){};
 var APPLY = {};
 var NEXT_FILTER = {e: null};
-var tryConvertToPromise = require("./thenables.js")(Promise, INTERNAL);
+var tryConvertToPromise = _dereq_("./thenables.js")(Promise, INTERNAL);
 var PromiseArray =
-    require("./promise_array.js")(Promise, INTERNAL, tryConvertToPromise);
-var CapturedTrace = require("./captured_trace.js")();
-var CatchFilter = require("./catch_filter.js")(NEXT_FILTER);
-var PromiseResolver = require("./promise_resolver.js");
+    _dereq_("./promise_array.js")(Promise, INTERNAL, tryConvertToPromise);
+var CapturedTrace = _dereq_("./captured_trace.js")();
+var CatchFilter = _dereq_("./catch_filter.js")(NEXT_FILTER);
+var PromiseResolver = _dereq_("./promise_resolver.js");
 var isArray = util.isArray;
 var errorObj = util.errorObj;
 var tryCatch1 = util.tryCatch1;
@@ -2124,7 +2131,7 @@ var OperationalError = errors.OperationalError;
 var originatesFromRejection = errors.originatesFromRejection;
 var markAsOriginatingFromRejection = errors.markAsOriginatingFromRejection;
 var canAttachTrace = errors.canAttachTrace;
-var apiRejection = require("./errors_api_rejection")(Promise);
+var apiRejection = _dereq_("./errors_api_rejection")(Promise);
 var unhandledRejectionHandled;
 var debugging = false || !!(
     typeof process !== "undefined" &&
@@ -3031,10 +3038,10 @@ if (!CapturedTrace.isSupported()) {
 }
 
 Promise._makeSelfResolutionError = makeSelfResolutionError;
-require("./finally.js")(Promise, NEXT_FILTER, tryConvertToPromise);
-require("./direct_resolve.js")(Promise);
-require("./synchronous_inspection.js")(Promise);
-require("./join.js")(Promise, PromiseArray, tryConvertToPromise, INTERNAL);
+_dereq_("./finally.js")(Promise, NEXT_FILTER, tryConvertToPromise);
+_dereq_("./direct_resolve.js")(Promise);
+_dereq_("./synchronous_inspection.js")(Promise);
+_dereq_("./join.js")(Promise, PromiseArray, tryConvertToPromise, INTERNAL);
 Promise.RangeError = RangeError;
 Promise.CancellationError = CancellationError;
 Promise.TimeoutError = TimeoutError;
@@ -3047,30 +3054,30 @@ util.toFastProperties(Promise);
 util.toFastProperties(Promise.prototype);
 Promise.Promise = Promise;
 CapturedTrace.setBounds(async.firstLineError, util.lastLineError);
-require('./timers.js')(Promise,INTERNAL,tryConvertToPromise);
-require('./race.js')(Promise,INTERNAL,tryConvertToPromise);
-require('./call_get.js')(Promise);
-require('./generators.js')(Promise,apiRejection,INTERNAL,tryConvertToPromise);
-require('./map.js')(Promise,PromiseArray,apiRejection,tryConvertToPromise,INTERNAL);
-require('./nodeify.js')(Promise);
-require('./promisify.js')(Promise,INTERNAL);
-require('./props.js')(Promise,PromiseArray,tryConvertToPromise);
-require('./reduce.js')(Promise,PromiseArray,apiRejection,tryConvertToPromise,INTERNAL);
-require('./settle.js')(Promise,PromiseArray);
-require('./some.js')(Promise,PromiseArray,apiRejection);
-require('./progress.js')(Promise,PromiseArray);
-require('./cancel.js')(Promise,INTERNAL);
-require('./filter.js')(Promise,INTERNAL);
-require('./any.js')(Promise,PromiseArray);
-require('./each.js')(Promise,INTERNAL);
-require('./using.js')(Promise,apiRejection,tryConvertToPromise);
+_dereq_('./timers.js')(Promise,INTERNAL,tryConvertToPromise);
+_dereq_('./race.js')(Promise,INTERNAL,tryConvertToPromise);
+_dereq_('./call_get.js')(Promise);
+_dereq_('./generators.js')(Promise,apiRejection,INTERNAL,tryConvertToPromise);
+_dereq_('./map.js')(Promise,PromiseArray,apiRejection,tryConvertToPromise,INTERNAL);
+_dereq_('./nodeify.js')(Promise);
+_dereq_('./promisify.js')(Promise,INTERNAL);
+_dereq_('./props.js')(Promise,PromiseArray,tryConvertToPromise);
+_dereq_('./reduce.js')(Promise,PromiseArray,apiRejection,tryConvertToPromise,INTERNAL);
+_dereq_('./settle.js')(Promise,PromiseArray);
+_dereq_('./some.js')(Promise,PromiseArray,apiRejection);
+_dereq_('./progress.js')(Promise,PromiseArray);
+_dereq_('./cancel.js')(Promise,INTERNAL);
+_dereq_('./filter.js')(Promise,INTERNAL);
+_dereq_('./any.js')(Promise,PromiseArray);
+_dereq_('./each.js')(Promise,INTERNAL);
+_dereq_('./using.js')(Promise,apiRejection,tryConvertToPromise);
 
 Promise.prototype = Promise.prototype;
 return Promise;
 
 };
 
-},{"./any.js":1,"./async.js":2,"./call_get.js":4,"./cancel.js":5,"./captured_trace.js":6,"./catch_filter.js":7,"./direct_resolve.js":8,"./each.js":9,"./errors.js":10,"./errors_api_rejection":11,"./filter.js":13,"./finally.js":14,"./generators.js":15,"./join.js":16,"./map.js":17,"./nodeify.js":18,"./progress.js":19,"./promise_array.js":21,"./promise_resolver.js":22,"./promisify.js":23,"./props.js":24,"./race.js":26,"./reduce.js":27,"./settle.js":29,"./some.js":30,"./synchronous_inspection.js":31,"./thenables.js":32,"./timers.js":33,"./using.js":34,"./util.js":35}],21:[function(require,module,exports){
+},{"./any.js":1,"./async.js":2,"./call_get.js":4,"./cancel.js":5,"./captured_trace.js":6,"./catch_filter.js":7,"./direct_resolve.js":8,"./each.js":9,"./errors.js":10,"./errors_api_rejection":11,"./filter.js":13,"./finally.js":14,"./generators.js":15,"./join.js":16,"./map.js":17,"./nodeify.js":18,"./progress.js":19,"./promise_array.js":21,"./promise_resolver.js":22,"./promisify.js":23,"./props.js":24,"./race.js":26,"./reduce.js":27,"./settle.js":29,"./some.js":30,"./synchronous_inspection.js":31,"./thenables.js":32,"./timers.js":33,"./using.js":34,"./util.js":35}],21:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -3097,8 +3104,8 @@ return Promise;
  */
 "use strict";
 module.exports = function(Promise, INTERNAL, tryConvertToPromise) {
-var canAttachTrace = require("./errors.js").canAttachTrace;
-var util = require("./util.js");
+var canAttachTrace = _dereq_("./errors.js").canAttachTrace;
+var util = _dereq_("./util.js");
 var isArray = util.isArray;
 
 function toResolutionValue(val) {
@@ -3246,7 +3253,7 @@ PromiseArray.prototype.getActualLength = function (len) {
 return PromiseArray;
 };
 
-},{"./errors.js":10,"./util.js":35}],22:[function(require,module,exports){
+},{"./errors.js":10,"./util.js":35}],22:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -3272,14 +3279,14 @@ return PromiseArray;
  * 
  */
 "use strict";
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var maybeWrapAsError = util.maybeWrapAsError;
-var errors = require("./errors.js");
+var errors = _dereq_("./errors.js");
 var TimeoutError = errors.TimeoutError;
 var OperationalError = errors.OperationalError;
-var async = require("./async.js");
+var async = _dereq_("./async.js");
 var haveGetters = util.haveGetters;
-var es5 = require("./es5.js");
+var es5 = _dereq_("./es5.js");
 
 function isUntypedError(obj) {
     return obj instanceof Error &&
@@ -3406,7 +3413,7 @@ PromiseResolver.prototype._setCarriedStackTrace = function (trace) {
 
 module.exports = PromiseResolver;
 
-},{"./async.js":2,"./errors.js":10,"./es5.js":12,"./util.js":35}],23:[function(require,module,exports){
+},{"./async.js":2,"./errors.js":10,"./es5.js":12,"./util.js":35}],23:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -3434,13 +3441,13 @@ module.exports = PromiseResolver;
 "use strict";
 module.exports = function(Promise, INTERNAL) {
 var THIS = {};
-var util = require("./util.js");
-var nodebackForPromise = require("./promise_resolver.js")
+var util = _dereq_("./util.js");
+var nodebackForPromise = _dereq_("./promise_resolver.js")
     ._nodebackForPromise;
 var withAppended = util.withAppended;
 var maybeWrapAsError = util.maybeWrapAsError;
 var canEvaluate = util.canEvaluate;
-var TypeError = require("./errors").TypeError;
+var TypeError = _dereq_("./errors").TypeError;
 var defaultSuffix = "Async";
 var defaultFilter = function(name, func) {
     return util.isIdentifier(name) &&
@@ -3736,7 +3743,7 @@ Promise.promisifyAll = function (target, options) {
 };
 
 
-},{"./errors":10,"./promise_resolver.js":22,"./util.js":35}],24:[function(require,module,exports){
+},{"./errors":10,"./promise_resolver.js":22,"./util.js":35}],24:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -3763,10 +3770,10 @@ Promise.promisifyAll = function (target, options) {
  */
 "use strict";
 module.exports = function(Promise, PromiseArray, tryConvertToPromise) {
-var util = require("./util.js");
-var apiRejection = require("./errors_api_rejection")(Promise);
+var util = _dereq_("./util.js");
+var apiRejection = _dereq_("./errors_api_rejection")(Promise);
 var isObject = util.isObject;
-var es5 = require("./es5.js");
+var es5 = _dereq_("./es5.js");
 
 function PropertiesPromiseArray(obj) {
     var keys = es5.keys(obj);
@@ -3841,7 +3848,7 @@ Promise.props = function (promises) {
 };
 };
 
-},{"./errors_api_rejection":11,"./es5.js":12,"./util.js":35}],25:[function(require,module,exports){
+},{"./errors_api_rejection":11,"./es5.js":12,"./util.js":35}],25:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -3976,7 +3983,7 @@ Queue.prototype._resizeTo = function (capacity) {
 
 module.exports = Queue;
 
-},{}],26:[function(require,module,exports){
+},{}],26:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4003,8 +4010,8 @@ module.exports = Queue;
  */
 "use strict";
 module.exports = function(Promise, INTERNAL, tryConvertToPromise) {
-var apiRejection = require("./errors_api_rejection.js")(Promise);
-var isArray = require("./util.js").isArray;
+var apiRejection = _dereq_("./errors_api_rejection.js")(Promise);
+var isArray = _dereq_("./util.js").isArray;
 
 var raceLater = function (promise) {
     return promise.then(function(array) {
@@ -4051,7 +4058,7 @@ Promise.prototype.race = function () {
 
 };
 
-},{"./errors_api_rejection.js":11,"./util.js":35}],27:[function(require,module,exports){
+},{"./errors_api_rejection.js":11,"./util.js":35}],27:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4082,7 +4089,7 @@ module.exports = function(Promise,
                           apiRejection,
                           tryConvertToPromise,
                           INTERNAL) {
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 var tryCatch4 = util.tryCatch4;
 var tryCatch3 = util.tryCatch3;
 var errorObj = util.errorObj;
@@ -4239,7 +4246,7 @@ Promise.reduce = function (promises, fn, initialValue, _each) {
 };
 };
 
-},{"./util.js":35}],28:[function(require,module,exports){
+},{"./util.js":35}],28:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4296,7 +4303,7 @@ else {
 }
 module.exports = schedule;
 
-},{}],29:[function(require,module,exports){
+},{}],29:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4325,7 +4332,7 @@ module.exports = schedule;
 module.exports =
     function(Promise, PromiseArray) {
 var PromiseInspection = Promise.PromiseInspection;
-var util = require("./util.js");
+var util = _dereq_("./util.js");
 
 function SettledPromiseArray(values) {
     this.constructor$(values);
@@ -4362,7 +4369,7 @@ Promise.prototype.settle = function () {
 };
 };
 
-},{"./util.js":35}],30:[function(require,module,exports){
+},{"./util.js":35}],30:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4390,9 +4397,9 @@ Promise.prototype.settle = function () {
 "use strict";
 module.exports =
 function(Promise, PromiseArray, apiRejection) {
-var util = require("./util.js");
-var RangeError = require("./errors.js").RangeError;
-var AggregateError = require("./errors.js").AggregateError;
+var util = _dereq_("./util.js");
+var RangeError = _dereq_("./errors.js").RangeError;
+var AggregateError = _dereq_("./errors.js").AggregateError;
 var isArray = util.isArray;
 
 
@@ -4517,7 +4524,7 @@ Promise.prototype.some = function (howMany) {
 Promise._SomePromiseArray = SomePromiseArray;
 };
 
-},{"./errors.js":10,"./util.js":35}],31:[function(require,module,exports){
+},{"./errors.js":10,"./util.js":35}],31:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4637,7 +4644,7 @@ Promise.prototype.reason = function() {
 Promise.PromiseInspection = PromiseInspection;
 };
 
-},{}],32:[function(require,module,exports){
+},{}],32:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4664,8 +4671,8 @@ Promise.PromiseInspection = PromiseInspection;
  */
 "use strict";
 module.exports = function(Promise, INTERNAL) {
-var util = require("./util.js");
-var canAttachTrace = require("./errors.js").canAttachTrace;
+var util = _dereq_("./util.js");
+var canAttachTrace = _dereq_("./errors.js").canAttachTrace;
 var errorObj = util.errorObj;
 var isObject = util.isObject;
 
@@ -4773,7 +4780,7 @@ function doThenable(x, then, traceParent) {
 return tryConvertToPromise;
 };
 
-},{"./errors.js":10,"./util.js":35}],33:[function(require,module,exports){
+},{"./errors.js":10,"./util.js":35}],33:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4800,9 +4807,9 @@ return tryConvertToPromise;
  */
 "use strict";
 module.exports = function(Promise, INTERNAL, tryConvertToPromise) {
-var util = require("./util.js");
-var errors = require("./errors.js");
-var apiRejection = require("./errors_api_rejection")(Promise);
+var util = _dereq_("./util.js");
+var errors = _dereq_("./errors.js");
+var apiRejection = _dereq_("./errors_api_rejection")(Promise);
 var TimeoutError = Promise.TimeoutError;
 
 var afterTimeout = function (promise, message) {
@@ -4876,7 +4883,7 @@ Promise.prototype.timeout = function (ms, message) {
 
 };
 
-},{"./errors.js":10,"./errors_api_rejection":11,"./util.js":35}],34:[function(require,module,exports){
+},{"./errors.js":10,"./errors_api_rejection":11,"./util.js":35}],34:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -4903,8 +4910,8 @@ Promise.prototype.timeout = function (ms, message) {
  */
 "use strict";
 module.exports = function (Promise, apiRejection, tryConvertToPromise) {
-    var TypeError = require("./errors.js").TypeError;
-    var inherits = require("./util.js").inherits;
+    var TypeError = _dereq_("./errors.js").TypeError;
+    var inherits = _dereq_("./util.js").inherits;
     var PromiseInspection = Promise.PromiseInspection;
 
     function inspectionMapper(inspections) {
@@ -5071,7 +5078,7 @@ module.exports = function (Promise, apiRejection, tryConvertToPromise) {
 
 };
 
-},{"./errors.js":10,"./util.js":35}],35:[function(require,module,exports){
+},{"./errors.js":10,"./util.js":35}],35:[function(_dereq_,module,exports){
 /**
  * The MIT License (MIT)
  * 
@@ -5097,7 +5104,7 @@ module.exports = function (Promise, apiRejection, tryConvertToPromise) {
  * 
  */
 "use strict";
-var es5 = require("./es5.js");
+var es5 = _dereq_("./es5.js");
 var haveGetters = (function(){
     try {
         var o = {};
@@ -5355,5 +5362,4 @@ module.exports = ret;
 
 },{"./es5.js":12}]},{},[3])
 (3)
-});
-;            ;if (typeof window !== 'undefined' && window !== null) {                           window.P = window.Promise;                                                 } else if (typeof self !== 'undefined' && self !== null) {                         self.P = self.Promise;                                                     }
+});            ;if (typeof window !== 'undefined' && window !== null) {                           window.P = window.Promise;                                                 } else if (typeof self !== 'undefined' && self !== null) {                         self.P = self.Promise;                                                     }
